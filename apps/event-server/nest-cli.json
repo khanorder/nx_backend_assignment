@@ -1,8 +1,8 @@
 {
   "$schema": "https://json.schemastore.org/nest-cli",
   "collection": "@nestjs/schematics",
-  "sourceRoot": "src",
+  "root": "./apps/event-server",
+  "sourceRoot": "./apps/event-server/src",
   "compilerOptions": {
-    "deleteOutDir": true
   }
 }

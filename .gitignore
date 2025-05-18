@@ -2,3 +2,5 @@
 .idea/
 .turbo/
 **/dist/
+**/config.yaml
+**/config.development.yaml
