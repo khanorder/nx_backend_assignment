@@ -1,0 +1,15 @@
+server:
+  port: 3400
+
+database:
+  auth:
+    url: 'mongodb://localhost:27017/auth'
+    id: ''
+    pw: ''
+    auth_source: 'admin'
+
+  event:
+    url: 'mongodb://localhost:27017/event'
+    id: ''
+    pw: ''
+    auth_source: 'admin'

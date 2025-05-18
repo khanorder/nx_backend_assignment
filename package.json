@@ -8,7 +8,10 @@
     "build": "pnpm run clear:dist && turbo run build --filter=./apps/**",
     "dev": "turbo run dev --filter=./apps/**",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "turbo run test",
+    "test:gateway": "turbo run test --filter=./apps/gateway-server",
+    "test:auth": "turbo run test --filter=./apps/auth-server",
+    "test:event": "turbo run test --filter=./apps/event-server"
   },
   "keywords": [],
   "author": "",

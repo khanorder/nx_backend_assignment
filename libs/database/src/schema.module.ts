@@ -1,20 +1,21 @@
-import { Module } from '@nestjs/common';
+import {Global, Module} from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { User, UserSchema } from './schemas/user.schema';
 import { Event, EventSchema } from './schemas/event.schema';
-import {UserService} from "./services/user.service";
-import {EventService} from "./services/event.service";
+import { UserService } from "./services/user.service";
+import { EventService } from "./services/event.service";
 
 const UserModels = MongooseModule.forFeature(
   [{ name: User.name, schema: UserSchema }],
-  'auth',
+  'auth'
 );
 
 const EventModels = MongooseModule.forFeature(
   [{ name: Event.name, schema: EventSchema }],
-  'event',
+  'event'
 );
 
+@Global()
 @Module({
   imports: [
     UserModels,

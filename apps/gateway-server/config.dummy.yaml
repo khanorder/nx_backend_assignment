@@ -1,0 +1,34 @@
+server:
+  port: 3000
+
+database:
+  auth:
+    url: 'mongodb://localhost:27017/auth'
+    id: ''
+    pw: ''
+    auth_source: 'admin'
+
+  event:
+    url: 'mongodb://localhost:27017/event'
+    id: ''
+    pw: ''
+    auth_source: 'admin'
+
+security:
+  jwt:
+    access:
+      private: 'private.access.pem'
+      public: 'public.access.pem'
+      expire: 1
+
+    refresh:
+      private: 'private.refresh.pem'
+      public: 'public.refresh.pem'
+      expire: 10000
+
+    token_name:
+      access: 'access-token'
+      refresh: 'refresh-token'
+
+    issuer: 'http://localhost'
+    audience: 'http://localhost'

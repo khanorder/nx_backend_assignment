@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "composite": true,
+    "outDir": "../../dist/libs/database"
+  },
+  "include": ["src"],
+  "references": [
+    { "path": "../../libs/common" },
+    { "path": "../../libs/auth-jwt" },
+  ]
+}

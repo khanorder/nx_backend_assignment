@@ -1,5 +1,5 @@
 {
-  "name": "@nx-assignment/common",
+  "name": "@nx-assignment/auth-jwt",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -12,15 +12,11 @@
   "packageManager": "pnpm@10.9.0",
   "dependencies": {
     "@nestjs/common": "^10.4.17",
-    "@nestjs/config": "^4.0.2",
-    "js-yaml": "^4.1.0",
+    "@nestjs/jwt": "^10.2.0",
     "rxjs": "^7.8.2",
-    "uuid": "^11.1.0",
-    "winston": "^3.17.0",
-    "winston-daily-rotate-file": "^5.0.0"
+    "uuid": "^11.1.0"
   },
   "devDependencies": {
-    "@types/js-yaml": "^4.0.9",
     "@types/node": "^18.19.100",
     "ts-loader": "^9.5.2",
     "ts-node": "^10.9.2",

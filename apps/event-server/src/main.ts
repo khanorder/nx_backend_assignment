@@ -6,7 +6,10 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const configService = app.get(ConfigService);
-  if ('production' !== configService.get('service')?.level) {
+  if (
+    'production' !== process.env.NODE_ENV ||
+    'development' === configService.get('service')?.level
+  ) {
     const swaggerConfig = new DocumentBuilder()
       .setTitle('이벤트 서버')
       .setDescription('Event Server')
