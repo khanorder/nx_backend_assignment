@@ -8,6 +8,8 @@ export {
   UserInterface,
   EventInterface,
   EventScheduleInterface,
+  ItemInterface,
+  QuestInterface,
   SignInResult,
   TypeToken,
   TypeRole,
@@ -16,4 +18,6 @@ export {
   TypeEventIdValues,
   TypeEventPattern,
   TypeEventPatternValues,
+  TypeQuestStatus,
+  TypeQuestStatusValues,
 } from './models';

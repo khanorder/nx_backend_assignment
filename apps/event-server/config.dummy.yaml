@@ -13,3 +13,9 @@ database:
     id: 'test'
     pw: 'test1234'
     auth_source: 'admin'
+
+  game:
+    url: 'mongodb://localhost:27017/game'
+    id: 'test'
+    pw: 'test1234'
+    auth_source: 'admin'

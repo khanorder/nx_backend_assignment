@@ -13,8 +13,8 @@ export class AppModule implements OnModuleInit {
   constructor(private readonly userService: UserService) {}
 
   async onModuleInit() {
-    if (await this.userService.isEmptyCollectionUsers()) {
-      await this.userService.initCollectionSeedUsers();
+    if (await this.userService.isEmptyCollection()) {
+      await this.userService.initCollectionSeed();
     }
   }
 }

@@ -7,6 +7,9 @@ export type TypeEventId = (typeof TypeEventIdValues)[number];
 export const TypeEventPatternValues = ['ONCE', 'REPEATEDLY', 'PERIOD'] as const;
 export type TypeEventPattern = (typeof TypeEventPatternValues)[number];
 
+export const TypeQuestStatusValues = ['IN_PROGRESS', 'COMPLETE'] as const;
+export type TypeQuestStatus = (typeof TypeQuestStatusValues)[number];
+
 export interface UserInterface {
   uid: string;
   nick: string;
@@ -27,6 +30,22 @@ export interface EventScheduleInterface {
   eventId: TypeEventId;
   startAt?: Date;
   endAt?: Date;
+}
+
+export interface ItemInterface {
+  uid: string;
+  userId: string;
+  itemId: string;
+  name: string;
+  count: number;
+}
+
+export interface QuestInterface {
+  uid: string;
+  userId: string;
+  questId: string;
+  name: string
+  status: TypeQuestStatus;
 }
 
 export class SignInResult {

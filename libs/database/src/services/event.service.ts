@@ -12,22 +12,22 @@ export class EventService {
     private readonly logger: LoggerService,
   ) {}
 
-  async isEmptyCollectionEvents(): Promise<boolean> {
+  async isEmptyCollection(): Promise<boolean> {
     try {
       const count = await this.eventModel.estimatedDocumentCount().exec();
       return 1 > count;
     } catch (error: any) {
-      this.logger.error(`${EventService.name}(isEmptyCollectionEvents): ${error.stack}`);
+      this.logger.error(`${EventService.name}(isEmptyCollection): ${error.stack}`);
     }
 
     return true;
   }
 
-  async initCollectionSeedEvents() {
+  async initCollectionSeed() {
     try {
       const result = await this.eventModel.create(seedEvents);
     } catch (error: any) {
-      this.logger.error(`${EventService.name}(initCollectionSeedEvents): ${error.stack}`);
+      this.logger.error(`${EventService.name}(initCollectionSeed): ${error.stack}`);
     }
   }
 }

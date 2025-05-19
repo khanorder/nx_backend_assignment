@@ -3,9 +3,13 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { User, UserSchema } from './schemas/user.schema';
 import { Event, EventSchema } from './schemas/event.schema';
 import { EventSchedule, EventScheduleSchema } from "./schemas/event-schedule.schema";
+import { Item, ItemSchema } from "./schemas/item.schema";
+import { Quest, QuestSchema } from "./schemas/quest.schema";
 import { UserService } from './services/user.service';
 import { EventService } from './services/event.service';
 import { EventScheduleService } from "./services/event-schedule.service";
+import { ItemService } from "./services/item.service";
+import { QuestService } from "./services/quest.service";
 
 const UserModels = MongooseModule.forFeature(
   [{ name: User.name, schema: UserSchema }],
@@ -22,24 +26,43 @@ const EventScheduleModels = MongooseModule.forFeature(
     'event',
 );
 
+const ItemModels = MongooseModule.forFeature(
+    [{ name: Item.name, schema: ItemSchema }],
+    'game',
+);
+
+const QuestModels = MongooseModule.forFeature(
+    [{ name: Quest.name, schema: QuestSchema }],
+    'game',
+);
+
 @Global()
 @Module({
   imports: [
     UserModels,
     EventModels,
-    EventScheduleModels
+    EventScheduleModels,
+    ItemModels,
+    QuestModels,
   ],
   providers: [
     UserService,
     EventService,
-    EventScheduleService
+    EventScheduleService,
+    ItemService,
+    QuestService,
   ],
   exports: [
     UserModels,
     EventModels,
+    EventScheduleModels,
+    ItemModels,
+    QuestModels,
     UserService,
     EventService,
-    EventScheduleService
+    EventScheduleService,
+    ItemService,
+    QuestService,
   ],
 })
 export class SchemaModule {}

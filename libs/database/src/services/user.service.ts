@@ -12,22 +12,22 @@ export class UserService {
     private readonly logger: LoggerService,
   ) {}
 
-  async isEmptyCollectionUsers(): Promise<boolean> {
+  async isEmptyCollection(): Promise<boolean> {
     try {
       const count = await this.userModel.estimatedDocumentCount().exec();
       return 1 > count;
     } catch (error: any) {
-      this.logger.error(`${UserService.name}(isEmptyCollectionUsers): ${error.stack}`);
+      this.logger.error(`${UserService.name}(isEmptyCollection): ${error.stack}`);
     }
 
     return true;
   }
 
-  async initCollectionSeedUsers() {
+  async initCollectionSeed() {
     try {
       const result = await this.userModel.create(seedUsers);
     } catch (error: any) {
-      this.logger.error(`${UserService.name}(initCollectionSeedUsers): ${error.stack}`);
+      this.logger.error(`${UserService.name}(initCollectionSeed): ${error.stack}`);
     }
   }
 }

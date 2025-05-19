@@ -20,12 +20,12 @@ export class AppModule implements OnModuleInit {
   ) {}
 
   async onModuleInit() {
-    if (await this.eventService.isEmptyCollectionEvents()) {
-      await this.eventService.initCollectionSeedEvents();
+    if (await this.eventService.isEmptyCollection()) {
+      await this.eventService.initCollectionSeed();
     }
 
-    if (await this.eventScheduleService.isEmptyCollectionEventSchedules()) {
-      await this.eventScheduleService.initCollectionSeedEventSchedules();
+    if (await this.eventScheduleService.isEmptyCollection()) {
+      await this.eventScheduleService.initCollectionSeed();
     }
   }
 }
