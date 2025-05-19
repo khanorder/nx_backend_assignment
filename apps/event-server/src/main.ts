@@ -26,6 +26,7 @@ async function bootstrap() {
       )
       .build();
     const swaggerDocument = SwaggerModule.createDocument(app, swaggerConfig);
+    swaggerDocument.security = [{ 'access-token': [] }];
     SwaggerModule.setup('swagger', app, swaggerDocument);
   }
   const port = configService.get('server')?.port ?? 3400;

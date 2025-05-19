@@ -4,31 +4,23 @@ server:
 database:
   auth:
     url: 'mongodb://localhost:27017/auth'
-    id: ''
-    pw: ''
+    id: 'test'
+    pw: 'test1234'
     auth_source: 'admin'
 
   event:
     url: 'mongodb://localhost:27017/event'
-    id: ''
-    pw: ''
+    id: 'test'
+    pw: 'test1234'
     auth_source: 'admin'
 
 security:
   jwt:
-    access:
-      private: 'private.access.pem'
-      public: 'public.access.pem'
-      expire: 1
-
-    refresh:
-      private: 'private.refresh.pem'
-      public: 'public.refresh.pem'
-      expire: 10000
-
-    token_name:
-      access: 'access-token'
-      refresh: 'refresh-token'
-
+    private: './private.pem'
+    public: './public.pem'
+    access_expire: 1
+    refresh_expire: 10
+    access_token_name: 'access-token'
+    refresh_token_name: 'refresh-token'
     issuer: 'http://localhost'
     audience: 'http://localhost'

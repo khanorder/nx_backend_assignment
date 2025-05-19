@@ -6,8 +6,8 @@ export type UserDocument = User & Document;
 
 @Schema({ timestamps: true })
 export class User implements UserInterface {
-  @Prop({ type: String, required: true, unique: true })
-  uid: BigInt;
+  @Prop({ required: true, unique: true })
+  uid: string;
 
   @Prop({ required: true })
   nick: string;

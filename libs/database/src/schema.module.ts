@@ -1,35 +1,45 @@
-import {Global, Module} from '@nestjs/common';
+import { Global, Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { User, UserSchema } from './schemas/user.schema';
 import { Event, EventSchema } from './schemas/event.schema';
-import { UserService } from "./services/user.service";
-import { EventService } from "./services/event.service";
+import { EventSchedule, EventScheduleSchema } from "./schemas/event-schedule.schema";
+import { UserService } from './services/user.service';
+import { EventService } from './services/event.service';
+import { EventScheduleService } from "./services/event-schedule.service";
 
 const UserModels = MongooseModule.forFeature(
   [{ name: User.name, schema: UserSchema }],
-  'auth'
+  'auth',
 );
 
 const EventModels = MongooseModule.forFeature(
   [{ name: Event.name, schema: EventSchema }],
-  'event'
+  'event',
+);
+
+const EventScheduleModels = MongooseModule.forFeature(
+    [{ name: EventSchedule.name, schema: EventScheduleSchema }],
+    'event',
 );
 
 @Global()
 @Module({
   imports: [
     UserModels,
-    EventModels
+    EventModels,
+    EventScheduleModels
   ],
   providers: [
     UserService,
-    EventService
+    EventService,
+    EventScheduleService
   ],
   exports: [
     UserModels,
     EventModels,
     UserService,
-    EventService
-  ]
+    EventService,
+    EventScheduleService
+  ],
 })
 export class SchemaModule {}

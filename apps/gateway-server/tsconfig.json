@@ -6,6 +6,8 @@
   "include": ["src"],
   "references": [
     { "path": "../../libs/common" },
-    { "path": "../../libs/database" }
+    { "path": "../../libs/database" },
+    { "path": "../../libs/auth" },
+    { "path": "../../libs/auth-jwt" }
   ]
 }

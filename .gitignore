@@ -1,6 +1,7 @@
 **/node_modules/
 .idea/
 .turbo/
+**/logs
 **/dist/
 **/config.yaml
 **/config.development.yaml

@@ -1,7 +1,7 @@
-import { Module } from '@nestjs/common';
+import { Module, OnModuleInit } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { DatabaseModule } from '@nx-assignment/database';
+import { DatabaseModule, UserService } from '@nx-assignment/database';
 import { CommonModule } from '@nx-assignment/common';
 
 @Module({
@@ -9,4 +9,12 @@ import { CommonModule } from '@nx-assignment/common';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule implements OnModuleInit {
+  constructor(private readonly userService: UserService) {}
+
+  async onModuleInit() {
+    if (await this.userService.isEmptyCollectionUsers()) {
+      await this.userService.initCollectionSeedUsers();
+    }
+  }
+}

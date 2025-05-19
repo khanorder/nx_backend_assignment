@@ -1,2 +1,1 @@
-export declare class SchemaModule {
-}
+export declare class SchemaModule {}

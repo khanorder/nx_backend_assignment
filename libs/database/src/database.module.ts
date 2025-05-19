@@ -11,11 +11,11 @@ import { SchemaModule } from './schema.module';
     MongooseModule.forRootAsync({
       connectionName: 'auth',
       imports: [CommonModule],
-      useFactory: (cfg: ConfigService) => ({
-        uri: cfg.get('database')?.auth?.url ?? '',
-        user: cfg.get('database')?.auth?.id ?? '',
-        pass: cfg.get('database')?.auth?.pw ?? '',
-        authSource: cfg.get('database')?.auth?.auth_source ?? '',
+      useFactory: (config: ConfigService) => ({
+        uri: config.get('database')?.auth?.url ?? '',
+        user: config.get('database')?.auth?.id ?? '',
+        pass: config.get('database')?.auth?.pw ?? '',
+        authSource: config.get('database')?.auth?.auth_source ?? '',
         autoCreate: true,
       }),
       inject: [ConfigService],
@@ -23,11 +23,11 @@ import { SchemaModule } from './schema.module';
     MongooseModule.forRootAsync({
       connectionName: 'event',
       imports: [CommonModule],
-      useFactory: (cfg: ConfigService) => ({
-        uri: cfg.get('database')?.event?.url ?? '',
-        user: cfg.get('database')?.auth?.id ?? '',
-        pass: cfg.get('database')?.auth?.pw ?? '',
-        authSource: cfg.get('database')?.auth?.auth_source ?? '',
+      useFactory: (config: ConfigService) => ({
+        uri: config.get('database')?.event?.url ?? '',
+        user: config.get('database')?.auth?.id ?? '',
+        pass: config.get('database')?.auth?.pw ?? '',
+        authSource: config.get('database')?.auth?.auth_source ?? '',
         autoCreate: true,
       }),
       inject: [ConfigService],
