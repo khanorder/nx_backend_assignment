@@ -3,7 +3,7 @@ setlocal
 set CONTAINER_NAME=nx-assignment-mongodb
 set MONGO_ROOT_USER=test
 set MONGO_ROOT_PASSWORD=test1234
-set MONGO_PORT=27017
+set MONGO_PORT=3500
 
 for /f "delims=" %%i in ('docker ps -a --filter "name=%CONTAINER_NAME%" -q') do (
     set CONTAINER_ID=%%i

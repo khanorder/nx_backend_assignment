@@ -1,0 +1,21 @@
+server:
+  port: ${APP_PORT}
+
+database:
+  game:
+    url: ${DB_GAME_CONNECTION_URL}
+    id: ${DB_GAME_USER}
+    pw: ${DB_GAME_PASS}
+    auth_source: ${DB_GAME_ADMIN}
+
+security:
+  jwt:
+    private: ${JWT_PRIVATE}
+    public: ${JWT_PUBLIC}
+    access_expire: ${JWT_ACCESS_EXPIRE}
+    refresh_expire: ${JWT_REFRESH_EXPIRE}
+    issuer: ${JWT_ISU}
+    audience: ${JWT_AUD}
+
+service:
+  level: ${SERVICE_LEVEL}

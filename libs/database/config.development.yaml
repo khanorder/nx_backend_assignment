@@ -3,19 +3,19 @@ server:
 
 database:
   auth:
-    url: 'mongodb://localhost:27017/auth'
+    url: 'mongodb://localhost:3500/auth'
     id: 'test'
     pw: 'test1234'
     auth_source: 'admin'
 
   event:
-    url: 'mongodb://localhost:27017/event'
+    url: 'mongodb://localhost:3500/event'
     id: 'test'
     pw: 'test1234'
     auth_source: 'admin'
 
   game:
-    url: 'mongodb://localhost:27017/game'
+    url: 'mongodb://localhost:3500/game'
     id: 'test'
     pw: 'test1234'
     auth_source: 'admin'

@@ -8,7 +8,7 @@ const YAML_CONFIG_FILENAME =
     : 'config.development.yaml';
 
 export default function loadYamlConfig() {
-  return yaml.load(
-    readFileSync(join(process.cwd(), YAML_CONFIG_FILENAME), 'utf8'),
-  ) as Record<string, any>;
+  const raw = readFileSync(join(process.cwd(), YAML_CONFIG_FILENAME), 'utf8');
+  const interpolated = raw.replace(/\$\{(\w+)\}/g, (_, key) => process.env[key] ?? '');
+  return yaml.load(interpolated) as Record<string, any>;
 }

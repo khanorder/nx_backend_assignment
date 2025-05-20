@@ -3,4 +3,4 @@
 .turbo/
 **/logs
 **/dist/
-**/config.yaml
+docker-compose.backup.yaml

@@ -3,7 +3,7 @@ server:
 
 database:
   auth:
-    url: 'mongodb://localhost:27017/auth'
+    url: 'mongodb://localhost:3500/auth'
     id: 'test'
     pw: 'test1234'
     auth_source: 'admin'
@@ -14,7 +14,5 @@ security:
     public: 'public.pem'
     access_expire: 1
     refresh_expire: 10000
-    access_token_name: 'access-token'
-    refresh_token_name: 'refresh-token'
     issuer: 'http://localhost'
     audience: 'http://localhost'

@@ -1,0 +1,12 @@
+server:
+  port: ${APP_PORT}
+
+database:
+  event:
+    url: ${DB_EVENT_CONNECTION_URL}
+    id: ${DB_EVENT_USER}
+    pw: ${DB_EVENT_PASS}
+    auth_source: ${DB_EVENT_ADMIN}
+
+service:
+  level: ${SERVICE_LEVEL}

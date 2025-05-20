@@ -1,0 +1,21 @@
+server:
+  port: ${APP_PORT}
+
+database:
+  auth:
+    url: ${DB_AUTH_CONNECTION_URL}
+    id: ${DB_AUTH_USER}
+    pw: ${DB_AUTH_PASS}
+    auth_source: ${DB_AUTH_ADMIN}
+
+security:
+  jwt:
+    private: ${JWT_PRIVATE}
+    public: ${JWT_PUBLIC}
+    access_expire: ${JWT_ACCESS_EXPIRE}
+    refresh_expire: ${JWT_REFRESH_EXPIRE}
+    issuer: ${JWT_ISU}
+    audience: ${JWT_AUD}
+
+service:
+  level: ${SERVICE_LEVEL}

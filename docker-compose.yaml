@@ -1,0 +1,73 @@
+services:
+  mongo:
+    image: mongodb/mongodb-community-server:latest
+    restart: unless-stopped
+    container_name: nx-assignment-mongodb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: test
+      MONGO_INITDB_ROOT_PASSWORD: test1234
+    ports:
+      - '3500:27017'
+
+  gateway:
+    build:
+      context: .
+      dockerfile: apps/gateway-server/Dockerfile
+    container_name: gateway-server
+    environment:
+      APP_PORT: 3000
+      SERVICE_LEVEL: development
+      DB_GAME_CONNECTION_URL: mongodb://nx-assignment-mongodb:27017/game
+      DB_GAME_USER: test
+      DB_GAME_PASS: test1234
+      DB_GAME_ADMIN: admin
+      JWT_PRIVATE: private.pem
+      JWT_PUBLIC: public.pem
+      JWT_ACCESS_EXPIRE: 1
+      JWT_REFRESH_EXPIRE: 10000
+      JWT_ISU: http://localhost
+      JWT_AUD: http://localhost
+    ports:
+      - '3000:3000'
+
+  event:
+    build:
+      context: .
+      dockerfile: apps/event-server/Dockerfile
+    container_name: event-server
+    environment:
+      APP_PORT: 3400
+      SERVICE_LEVEL: development
+      DB_EVENT_CONNECTION_URL: mongodb://nx-assignment-mongodb:27017/event
+      DB_EVENT_USER: test
+      DB_EVENT_PASS: test1234
+      DB_EVENT_ADMIN: admin
+      JWT_PRIVATE: private.pem
+      JWT_PUBLIC: public.pem
+      JWT_ACCESS_EXPIRE: 1
+      JWT_REFRESH_EXPIRE: 10000
+      JWT_ISU: http://localhost
+      JWT_AUD: http://localhost
+    ports:
+      - '3400:3400'
+
+  auth:
+    build:
+      context: .
+      dockerfile: apps/auth-server/Dockerfile
+    container_name: auth-server
+    environment:
+      APP_PORT: 3200
+      SERVICE_LEVEL: development
+      DB_AUTH_CONNECTION_URL: mongodb://nx-assignment-mongodb:27017/auth
+      DB_AUTH_USER: test
+      DB_AUTH_PASS: test1234
+      DB_AUTH_ADMIN: admin
+      JWT_PRIVATE: private.pem
+      JWT_PUBLIC: public.pem
+      JWT_ACCESS_EXPIRE: 1
+      JWT_REFRESH_EXPIRE: 10000
+      JWT_ISU: http://localhost
+      JWT_AUD: http://localhost
+    ports:
+      - '3200:3200'

@@ -3,7 +3,7 @@ server:
 
 database:
   event:
-    url: 'mongodb://localhost:27017/event'
+    url: 'mongodb://localhost:3500/event'
     id: 'test'
     pw: 'test1234'
     auth_source: 'admin'

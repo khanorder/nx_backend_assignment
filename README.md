@@ -1,7 +1,22 @@
 # 이벤트 / 보상 관리 플랫폼 구축
 
-## 프로젝트 폴더 구조
+## docker-compose 빌드
+  - auth-server, event-server, gateway-server 3개 서버 빌드
+```
+docker-compose build --no-cache
+```
 
+## 각 서버 docker container로 실행
+```
+docker-compose up -d
+```
+
+## 전체 서버 종료 및 제거
+```
+docker-compose down --remove-orphans
+```
+
+## 프로젝트 폴더 구조
 ```
 /my-monorepo
 ├── apps/

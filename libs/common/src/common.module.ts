@@ -8,6 +8,7 @@ import configuration from './configuration';
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
+      expandVariables: true,
       load: [configuration],
     }),
   ],

@@ -2,19 +2,20 @@ server:
   port: 3000
 
 database:
-  game:
-    url: 'mongodb://localhost:27017/game'
+  auth:
+    url: 'mongodb://localhost:3500/auth'
     id: 'test'
     pw: 'test1234'
     auth_source: 'admin'
 
-security:
-  jwt:
-    private: 'private.pem'
-    public: 'public.pem'
-    access_expire: 1
-    refresh_expire: 10
-    access_token_name: 'access-token'
-    refresh_token_name: 'refresh-token'
-    issuer: 'http://localhost'
-    audience: 'http://localhost'
+  event:
+    url: 'mongodb://localhost:3500/event'
+    id: 'test'
+    pw: 'test1234'
+    auth_source: 'admin'
+
+  game:
+    url: 'mongodb://localhost:3500/game'
+    id: 'test'
+    pw: 'test1234'
+    auth_source: 'admin'
