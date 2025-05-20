@@ -6,7 +6,7 @@
 docker-compose build --no-cache
 ```
 
-## 각 서버 docker container로 실행
+## 각 서버 도커 컨테이너로 실행
 ```
 docker-compose up -d
 ```
@@ -15,6 +15,12 @@ docker-compose up -d
 ```
 docker-compose down --remove-orphans
 ```
+
+## API 테스트 도구 페이지(Swagger)
+- 도커 컨테이너 실행 후
+- gateway-server: http://localhost:3000/swagger
+- auth-server: http://localhost:3200/swagger
+- event-server: http://localhost:3400/swagger
 
 ## 프로젝트 폴더 구조
 ```
