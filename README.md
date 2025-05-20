@@ -1,6 +1,7 @@
 # 이벤트 / 보상 관리 플랫폼 구축
 
 ## 프로젝트 폴더 구조
+
 ```
 /my-monorepo
 ├── apps/
@@ -42,18 +43,20 @@
 ```
 
 ## 데이터베이스(mongodb) docker container 초기화
-  - Windows 환경에 wsl 및 docker desktop 설치 필요
-  - 프로젝트 파일 내 reset-db.bat 파일 실행
-  - reset-db.bat 파일 항목
-    - MONGO_ROOT_USER: 2번줄 아이디 설정
-    - MONGO_ROOT_PASSWORD: 3번줄 비밀번호 설정
-    - MONGO_PORT: 4번줄 호스트 로컬(작업pc)에서 사용할 mongodb port
-  - 기존 컨테이너가 실행중인 경우 기존 컨테이너 삭제 후 새로 생성
+
+- Windows 환경에 wsl 및 docker desktop 설치 필요
+- 프로젝트 파일 내 reset-db.bat 파일 실행
+- reset-db.bat 파일 항목
+  - MONGO_ROOT_USER: 2번줄 아이디 설정
+  - MONGO_ROOT_PASSWORD: 3번줄 비밀번호 설정
+  - MONGO_PORT: 4번줄 호스트 로컬(작업pc)에서 사용할 mongodb port
+- 기존 컨테이너가 실행중인 경우 기존 컨테이너 삭제 후 새로 생성
 
 ## jwt 생성 검증에 사용할 RSA 키 쌍 생성
-  - wsl 환경에서 아래 명령어 실행
-  - 2048비트 개인키 생성
-    - openssl genrsa -out private.pem 2048
-  - 공개키 추출
-    - openssl rsa -in private.pem -pubout -out public.pem
-  - 생성된 private.pem, public.pem 파일을 프로젝트 폴더의 apps/auth-server, apps/gateway-server에 각각 복사
+
+- wsl 환경에서 아래 명령어 실행
+- 2048비트 개인키 생성
+  - openssl genrsa -out private.pem 2048
+- 공개키 추출
+  - openssl rsa -in private.pem -pubout -out public.pem
+- 생성된 private.pem, public.pem 파일을 프로젝트 폴더의 apps/auth-server, apps/gateway-server에 각각 복사

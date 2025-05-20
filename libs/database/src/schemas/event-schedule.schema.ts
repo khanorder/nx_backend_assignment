@@ -1,6 +1,10 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
-import { EventScheduleInterface, TypeEventId, TypeEventPattern } from '@nx-assignment/common';
+import {
+  EventScheduleInterface,
+  TypeEventId,
+  TypeEventPattern,
+} from '@nx-assignment/common';
 
 export type EventScheduleDocument = EventSchedule & Document;
 

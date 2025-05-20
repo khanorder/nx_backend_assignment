@@ -2,11 +2,7 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "composite": true,
-    "outDir": "../../dist/libs/common",
-    "typeRoots": [
-      "node_modules/@types",
-      "src/types"
-    ]
+    "outDir": "../../dist/libs/common"
   },
-  "include": ["src", "src/types/express.d.ts"]
+  "include": ["src"]
 }

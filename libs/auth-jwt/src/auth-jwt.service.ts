@@ -6,7 +6,7 @@ import {
   UserInterface,
   SignInResult,
   TypeRole,
-  TypeToken,
+  TypeToken, TokenResult,
 } from '@nx-assignment/common';
 import { readFileSync } from 'fs';
 import { v4 as uuid } from 'uuid';
@@ -86,19 +86,20 @@ export class AuthJwtService {
     this._expireRefresh = expireRefresh;
   }
 
-  public async generateAccessToken(user: UserInterface): Promise<string> {
+  public async generateAccessToken(user: UserInterface): Promise<TokenResult> {
+    const result = new TokenResult();
     if (!this._privateKey) {
       this.loggerService.error(
         `${AuthJwtService.name} - ${this.generateAccessToken.name}: JWT private key is empty.`,
       );
-      return '';
+      return result;
     }
 
     if (1 > user.roles.length) {
       this.loggerService.error(
         `${AuthJwtService.name} - ${this.generateAccessToken.name}: the user role is empty.`,
       );
-      return '';
+      return result;
     }
 
     let accessToken = '';
@@ -121,6 +122,8 @@ export class AuthJwtService {
           algorithm: 'RS256',
         },
       );
+      result.token = accessToken;
+      result.jwtId = jwtid;
     } catch (error: any) {
       if ('production' !== this.configService.get('service')?.level) {
         this.loggerService.error(
@@ -132,25 +135,27 @@ export class AuthJwtService {
       }
     }
 
-    return accessToken;
+    return result;
   }
 
-  public async generateRefreshToken(user: UserInterface): Promise<string> {
+  public async generateRefreshToken(user: UserInterface): Promise<TokenResult> {
+    const result = new TokenResult();
     if (!this._privateKey) {
       this.loggerService.error(
         `${AuthJwtService.name} - ${this.generateRefreshToken.name}: JWT private key is empty.`,
       );
-      return '';
+      return result;
     }
 
     if (1 > user.roles.length) {
       this.loggerService.error(
         `${AuthJwtService.name} - ${this.generateRefreshToken.name}: the user role is empty.`,
       );
-      return '';
+      return result;
     }
 
     let refreshToken = '';
+    const jwtid = uuid();
 
     try {
       refreshToken = this.jwtService.sign(
@@ -164,11 +169,13 @@ export class AuthJwtService {
           privateKey: this._privateKey,
           issuer: this._issuer,
           audience: this._audience,
-          jwtid: uuid(),
+          jwtid: jwtid,
           expiresIn: 60 * this._expireRefresh,
           algorithm: 'RS256',
         },
       );
+      result.token = refreshToken;
+      result.jwtId = jwtid;
     } catch (error: any) {
       if ('production' !== this.configService.get('service')?.level) {
         this.loggerService.error(
@@ -180,15 +187,19 @@ export class AuthJwtService {
       }
     }
 
-    return refreshToken;
+    return result;
   }
 
   public async signIn(user: UserInterface): Promise<SignInResult> {
-    const result = new SignInResult('', '');
+    const result = new SignInResult();
 
     try {
-      result.accessToken = await this.generateAccessToken(user);
-      result.refreshToken = await this.generateRefreshToken(user);
+      const resultAccessToken = await this.generateAccessToken(user);
+      const resultRefreshToken = await this.generateRefreshToken(user);
+      result.accessToken = resultAccessToken.token;
+      result.accessTokenId = resultAccessToken.jwtId;
+      result.refreshToken = resultRefreshToken.token;
+      result.refreshTokenId = resultRefreshToken.jwtId;
       return result;
     } catch (error: any) {
       if ('production' !== this.configService.get('service')?.level) {

@@ -14,6 +14,9 @@ export class User implements UserInterface {
 
   @Prop({ type: [], default: ['USER'] })
   roles: TypeRole[];
+
+  @Prop()
+  refreshTokenId?: string;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

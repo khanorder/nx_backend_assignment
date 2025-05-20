@@ -2,7 +2,6 @@ import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { Strategy, ExtractJwt } from 'passport-jwt';
 import { configuration, TypeToken, UserInterface } from '@nx-assignment/common';
-import { AuthJwtService } from '@nx-assignment/auth-jwt';
 import { readFileSync } from 'fs';
 import { join } from 'path';
 const config = configuration();
@@ -21,7 +20,7 @@ export class RefreshTokenStrategy extends PassportStrategy(
   Strategy,
   'jwt-refresh',
 ) {
-  constructor(private authJwtService: AuthJwtService) {
+  constructor() {
     super({
       jwtFromRequest: ExtractJwt.fromBodyField('refreshToken'),
       secretOrKey: PUBLIC_KEY,
@@ -35,7 +34,6 @@ export class RefreshTokenStrategy extends PassportStrategy(
         `RefreshTokenStrategy: the token type is not refresh token. type: ${payload.type}`,
       );
     }
-    const refreshToken = req.body.refreshToken;
-    return { uid: payload.uid, roles: payload.roles, nick: payload.nick };
+    return { uid: payload.uid, roles: payload.roles, nick: payload.nick, refreshTokenId: payload.jti };
   }
 }

@@ -1,0 +1,11 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "composite": true,
+    "outDir": "../../dist/libs/api"
+  },
+  "include": ["src"],
+  "references": [
+    { "path": "../../libs/common" },
+  ]
+}

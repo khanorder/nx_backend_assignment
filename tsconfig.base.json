@@ -20,7 +20,8 @@
       "@nx-assignment/common": ["libs/common/src"],
       "@nx-assignment/database": ["libs/database/src"],
       "@nx-assignment/auth-jwt": ["libs/auth-jwt/src"],
-      "@nx-assignment/auth": ["libs/auth/src"]
+      "@nx-assignment/auth": ["libs/auth/src"],
+      "@nx-assignment/api": ["libs/api/src"]
     }
   }
 }

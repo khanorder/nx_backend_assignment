@@ -5,7 +5,6 @@
   },
   "include": ["src"],
   "references": [
-    { "path": "../../libs/common" },
-    { "path": "../../libs/database" }
+    { "path": "../../libs" }
   ]
 }

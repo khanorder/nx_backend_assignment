@@ -1,23 +1,28 @@
-import { Module, OnModuleInit } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule, OnModuleInit } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import {
-  DatabaseModule,
+  EventDatabaseModule,
   EventScheduleService,
   EventService,
 } from '@nx-assignment/database';
 import { CommonModule } from '@nx-assignment/common';
+import { LoggerMiddleware } from './logger.middleware';
 
 @Module({
-  imports: [CommonModule, DatabaseModule],
+  imports: [CommonModule, EventDatabaseModule],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule implements OnModuleInit {
+export class AppModule implements OnModuleInit, NestModule {
   constructor(
     private readonly eventService: EventService,
     private readonly eventScheduleService: EventScheduleService,
   ) {}
+
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(LoggerMiddleware).forRoutes('/');
+  }
 
   async onModuleInit() {
     if (await this.eventService.isEmptyCollection()) {

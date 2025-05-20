@@ -1,4 +1,6 @@
-export { DatabaseModule } from './database.module';
+export { AuthDatabaseModule } from './modules/auth-database.module';
+export { EventDatabaseModule } from './modules/event-database.module';
+export { GameDatabaseModule } from './modules/game-database.module';
 export { UserService } from './services/user.service';
 export { EventService } from './services/event.service';
 export { EventScheduleService } from './services/event-schedule.service';

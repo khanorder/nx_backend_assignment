@@ -6,5 +6,10 @@ export const seedEventSchedules: EventScheduleInterface[] = [
   { uid: uuid(), eventId: 'THIRTYDAYS' },
   { uid: uuid(), eventId: 'ATTENDANCE_WEEK' },
   { uid: uuid(), eventId: 'INVITE_3' },
-  { uid: uuid(), eventId: 'GET_ITEM', startAt: dayjs().toDate(), endAt: dayjs().add(30, 'day').toDate() },
+  {
+    uid: uuid(),
+    eventId: 'GET_ITEM',
+    startAt: dayjs().toDate(),
+    endAt: dayjs().add(30, 'day').toDate(),
+  },
 ];
